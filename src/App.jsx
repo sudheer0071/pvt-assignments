@@ -12,10 +12,10 @@ function App() {
   return (
     <div> 
     {/* <Assgnment1/>  */}
-    <RecoilRoot>
+    {/* <RecoilRoot>
     <Assgnment2/>
-    </RecoilRoot>
-    {/* <Assgnment3/> */}
+    </RecoilRoot> */}
+    <Assgnment3/>
     {/* <Assgnment4/> */}
     {/* <Assgnment5/> */}
     </div>
