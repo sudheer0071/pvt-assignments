@@ -33,12 +33,11 @@ export function Assgnment4(){
   return <div>
       <button onClick={()=>{setUsername('sudheer0071');getInfo();}}>git details</button>
      <div className="git-card">
-     {infor && (
-        <div>
-          <h2>{infor.login}</h2>
-           {infor.id}
-        </div>
-    )}
+   {Object.entries(infor).map(([key,value])=>
+    <div key={key}>
+      <strong>{key}:</strong> {value}
+    </div>
+   )}
      </div>
   </div>
 }
