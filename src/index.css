@@ -167,6 +167,17 @@ p{
 }
 
 
+/* ************************************* ASSIGNMENT 3 ************************************ */
+.git-card{
+  margin-top: 30px;
+  max-height: 200px;
+  background-color: #535bf2;
+  color: white;
+  font-size: larger;
+  font-weight: 500;
+  width: 400px;
+  border-radius: 7px;
+}
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
