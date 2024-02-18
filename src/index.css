@@ -175,11 +175,42 @@ p{
   color: white;
   font-size: larger;
   font-weight: 500;
-  max-width: 600px;
-  overflow-y: scroll;
+  width: 300px;
+  overflow-y : hidden; 
   max-height: 400px;
-  border-radius: 7px;
+  border-radius: 7px; 
+  border: 10px solid transparent;  
 }
+.git-card:hover{
+  overflow-y: scroll;
+}
+ 
+.git-card::-webkit-scrollbar {
+  /* display:  ; */
+  width: 8px; /* Set the width of the scrollbar */
+  border-radius: 10px;
+}
+
+.git-card::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.5); /* Customize the scrollbar color */
+}
+p{
+  color: #1a1a1a;
+}
+img{
+  width: 120px;
+  height: 100px;
+}  
+
+::-webkit-scrollbar-thumb {
+  background: rgb(42, 43, 40);  
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3f413a;  
+} 
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

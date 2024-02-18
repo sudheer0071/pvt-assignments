@@ -2,42 +2,37 @@ import { useState } from "react"
 import { object } from "zod"
 
 export function Assgnment4(){
-  const [username, setUsername] = useState('')
-  const [infor, setInfor] = useState([])
+  const [userData, setUserData] = useState(null);
+  const [username, setUsername] = useState('');
 
-  async function getInfo(){
-    const response = await fetch('https://api.github.com/users/'+username, {
-      method:'GET',
-      headers:{
-        'Content-Type':'text/css'
-      }
-    })
-    if (response.ok) {
-      const info = await response.json()
-      console.log(info);
-      setInfor(info) 
+  const fetchUserData = async () => {
+    const username = 'sudheer0071'
+    try {
+      const response = await fetch(`https://api.github.com/users/${username}`);
+      const data = await response.json();
+      setUserData(data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
     }
-  }
+  };
 
-  function information(){
-    const info =  infor.map((info)=>{
-      return <div>
-        <h1>{info.login}</h1>
-        <h2>{info.id}</h2>
-        <h2>{info.node_id}</h2>
-      </div>
-      })
-      setInfor(info)
-    }
-  
-  return <div>
-      <button onClick={()=>{setUsername('sudheer0071');getInfo();}}>git details</button>
-     <div className="git-card">
-   {Object.entries(infor).map(([key,value])=>
-    <div key={key}>
-      <strong>{key}:</strong> {value}
+  const handleChange = (event) => {
+    setUsername(event.target.value);
+  };
+
+  return (
+    <div>  
+      <button onClick={()=>{fetchUserData();}}>Fetch</button>
+      {userData && (
+        <div className="git-card">
+          <img src={userData.avatar_url} alt="User avatar" />
+          <h2>{userData.name}</h2>
+          <p>{userData.bio}</p>
+          <p>Followers: {userData.followers}</p>
+          <p>Following: {userData.following}</p>
+          <p>Public Repos: {userData.public_repos}</p>
+        </div>
+      )}
     </div>
-   )}
-     </div>
-  </div>
-}
+  );
+};
