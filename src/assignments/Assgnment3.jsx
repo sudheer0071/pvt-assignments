@@ -1,29 +1,49 @@
 import axios from 'axios'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
-export function Assgnment3(){
+export function Assgnment3(){ 
+    
+  const [numWords, setNumWords] = useState(0);
+  const [words, setWords] = useState([]);
+  // const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const [typingEffect, setTypingEffect] = useState('');
 
-  const[num,setNum] = useState('')
-  const [para, setPara] = useState('')
-
-  const handleclick = ()=>{
-    setPara("Thi is para is generated")
-  }
- 
-  // const axios = require('axios');
-
-  async function generatePara(){ 
-      const words = ['This','is','Randomly','Generated','paragraph','Which','Does','not','makes','sense']
-
-      for (let i = 0; i < words.length; i++) {
-         
+  useEffect(() => {
+    if (words.length === 0) {
+      setTypingEffect('');
+      return;
+    } 
+    let currentWordIndex = 0;
+    const interval = setInterval(() => {
+      if (currentWordIndex < words.length) {
+        const nextword = words[currentWordIndex]
+        setTypingEffect((prev) => prev + ' ' + nextword);
+        currentWordIndex++;
+      } else {
+        clearInterval(interval);
       }
+    }, 100);
 
+    return () => clearInterval(interval);
+  }, [words]);
+
+  async function generateWords() {
+    const response = await axios.get(`https://random-word-api.herokuapp.com/word?number=${numWords}`);
+    const words = response.data;
+    setWords(words);
+    setTypingEffect('');
   }
-  return <div> 
-   <h2>Para Generator</h2>
-   <input type="text" placeholder="Enter Number of words" onChange={(e)=>{setNum(e.target.value)}} />
-   <button onClick={generatePara}>Generator</button> 
-   <div className="para">{para}</div>
-  </div>
-}  
+
+
+  return (
+    <div>
+      <input
+        type="number"
+        placeholder="Enter number of words"
+        onChange={(e) => setNumWords(parseInt(e.target.value))}
+      />
+      <button onClick={generateWords}>Generate</button>
+      <div className="para">{typingEffect}</div>
+    </div>
+  );
+}

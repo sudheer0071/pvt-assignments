@@ -6,9 +6,7 @@ const [phoneno, setPhoneno] = useState('')
 const [submitotp, setSubmitotp] = useState('')
 
   function sendOtp(){ 
-     
-  }
-
+  } 
   return <div>
     <h1>Login Via OTP</h1>
     <input type="text" onChange={(e)=>{setPhoneno(e.target.value)}}/>
