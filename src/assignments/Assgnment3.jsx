@@ -38,9 +38,10 @@ return ()=>clearInterval(interval)
   return (
     <div>
       <input
+      className='generate'
         type="number"
-        placeholder="Enter number of words"
-        onChange={(e) => setNumWords(parseInt(e.target.value))}
+        placeholder="Enter number of words" 
+        onChange={(e) => setNumWords(e.target.value)}
       />
       <button onClick={generateWords}>Generate</button>
       <div className="para">{typereffect}</div>
