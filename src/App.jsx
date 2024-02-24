@@ -9,13 +9,14 @@ import { RecoilRoot } from 'recoil'
 
 function App() {
   const [count, setCount] = useState(0) 
+   
   return (
-    <div> 
+    <div>  
     {/* <Assgnment1/>  */}
-    {/* <RecoilRoot>
-    <Assgnment2/>
-    </RecoilRoot> */}
+    <RecoilRoot>
+    {/* <Assgnment2/> */}
     <Assgnment3/>
+    </RecoilRoot>
     {/* <Assgnment4/> */}
     {/* <Assgnment5/> */}
     </div>
